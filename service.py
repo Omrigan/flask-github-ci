@@ -20,8 +20,11 @@ t = Thread(target=run_by_dir, args=(directory,))
 @app.route('/goto-push',  methods=['GET', 'POST'])
 def push_hook():
     execute=True
+    global t
     if not t.isAlive():
+        t = Thread(target=run_by_dir, args=(directory,))
         t.start()
+
     # run_by_dir(directory)
     return 'OK'
 if __name__=='__main__':
