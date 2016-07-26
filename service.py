@@ -3,7 +3,7 @@ from plumbum import local, FG
 from threading import Thread
 
 app = Flask(__name__)
-directory = '/home/oleg/gotosite'
+directory = '/home/oleg/example'
 execute = True
 
 
@@ -36,4 +36,4 @@ def push_hook():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=8005)

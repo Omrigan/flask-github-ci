@@ -1,0 +1,1 @@
+screen -dmS flask-ci python3 /path/to/your/flask-github-ci/service.py
