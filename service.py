@@ -11,14 +11,15 @@ def run_by_dir(path):
         execute = False
         local.cwd.chdir(path)
         local['git']['pull'] & FG
-        local['docker-compose']['build']['--no-cache'] & FG
+        local['docker-compose']['build'] & FG
         local['docker-compose']['up']['-d'] & FG
-
+        print('Finished')
 
 
 t = Thread(target=run_by_dir, args=(directory,))
 @app.route('/goto-push',  methods=['GET', 'POST'])
 def push_hook():
+    global execute
     execute=True
     global t
     if not t.isAlive():
